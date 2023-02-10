@@ -1,4 +1,4 @@
-package wc_bj_10972_2;
+package baekjoon.wc_bj_10972.wc_bj_10972_2;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package wc_bj_1182;
+package baekjoon.wc_bj_1182.wc_bj_1182;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class Main {
 		List<Integer> left = new ArrayList<Integer>();
 		List<Integer> right = new ArrayList<Integer>();
 		
-		//ÀÔ·Â ½ÃÀÛ
+		//ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		try {
 			s = br.readLine();
 			String[] sArr = s.split(" ");
@@ -32,7 +32,7 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//ÀÔ·Â ¿Ï·á
+		//ï¿½Ô·ï¿½ ï¿½Ï·ï¿½
 		for(int i = 1; i <= right.size(); i++) {
 			int[] comb = new int[i];
 			int j;

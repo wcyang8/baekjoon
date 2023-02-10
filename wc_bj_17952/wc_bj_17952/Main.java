@@ -1,4 +1,4 @@
-package wc_bj_17952;
+package baekjoon.wc_bj_17952.wc_bj_17952;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,30 +15,30 @@ public class Main {
 		int N;
 		int score = 0;
 		Stack<List<Integer>> hwSchedule = new Stack<>();
-		try {	//BufferedReader¸¦ »ç¿ëÇØ¼­ ÀÔ·Â ¹Þ±â
-			s = br.readLine();	//¿¹¿Ü Ã³¸® ÇÊ¼ö
+		try {	//BufferedReaderï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ô·ï¿½ ï¿½Þ±ï¿½
+			s = br.readLine();	//ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½Ê¼ï¿½
 			N = Integer.parseInt(s);
-			for(int i = 0; i < N; i++) {	//iºÐ °æ°ú
+			for(int i = 0; i < N; i++) {	//iï¿½ï¿½ ï¿½ï¿½ï¿½
 				s = br.readLine();
 				String[] sArr = s.split(" ");
-				if(Integer.parseInt(sArr[0]) == 1) {	//°úÁ¦ Á¤º¸ Ã¹ Ä­ = 1 : °úÁ¦ »ðÀÔ
+				if(Integer.parseInt(sArr[0]) == 1) {	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¹ Ä­ = 1 : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					List<Integer> hw = new ArrayList<Integer>();
 					hw.add(Integer.parseInt(sArr[1]));
 					hw.add(Integer.parseInt(sArr[2]));
 					hwSchedule.add(hw);
 				}
-				if(!hwSchedule.empty()) {						//°úÁ¦ ½ºÄÉÁì ½ÇÇà
+				if(!hwSchedule.empty()) {						//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					List<Integer> temp = hwSchedule.peek();
 					hwSchedule.pop();
-					if(temp.get(1) == 1) {		//°úÁ¦°¡ ÀÌ¹ø ½ÇÇà¿¡ ³¡³²
-						score += temp.get(0);	//Á¡¼ö È¹µæ
+					if(temp.get(1) == 1) {		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½à¿¡ ï¿½ï¿½ï¿½ï¿½
+						score += temp.get(0);	//ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½
 						continue;
 					}
-					temp.set(1, temp.get(1) - 1);	//°úÁ¦ ÁøÇà
-					hwSchedule.add(temp);			//°úÁ¦ ½ºÄÉÁÙ¿¡ ´Ù½Ã ³Ö¾îÁÜ.
+					temp.set(1, temp.get(1) - 1);	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+					hwSchedule.add(temp);			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¿ï¿½ ï¿½Ù½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½.
 				}
 			}
-		} catch (IOException e) {	//¿¹¿Ü Ã³¸®
+		} catch (IOException e) {	//ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 			e.printStackTrace();
 		}
 		System.out.println(score);

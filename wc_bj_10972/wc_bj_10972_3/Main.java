@@ -1,4 +1,4 @@
-package wc_bj_10972_3;
+package baekjoon.wc_bj_10972.wc_bj_10972_3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Main {
 			System.out.println(-1);
 			return;
 		}
-		m.perm(0, state);
+		//m.perm(0, state);
 	}
 	public Main(){
 		Scanner sc = new Scanner(System.in);
