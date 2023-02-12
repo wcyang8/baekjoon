@@ -5,12 +5,11 @@ public class Main {
 
 	public class tree {
 		public int value;
-		public tree parent = null;
 		public tree leftChild = null;
 		public tree rightChild = null;
-		public boolean visit = false;
 	}
 	
+	public static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String[] sArr;
@@ -33,24 +32,23 @@ public class Main {
 
 			if (tempLC >= 0) {
 				trees[tempP].leftChild = trees[tempLC];
-				trees[tempLC].parent = trees[tempP];
 			}
 			if (tempRC >= 0) {
 				trees[tempP].rightChild = trees[tempRC];
-				trees[tempRC].parent = trees[tempP];
 			}
 		}
 		
 		pre(trees[0]);
-		System.out.println();
+		sb.append('\n');
 		in(trees[0]);
-		System.out.println();
+		sb.append('\n');
 		post(trees[0]);
+		System.out.println(sb);
 	}
 
 
 	public static void pre(tree t) {
-		System.out.print((char)('A'+t.value));
+		sb.append((char)('A'+t.value));
 		if(t.leftChild != null) {
 			pre(t.leftChild);
 		}
@@ -62,7 +60,7 @@ public class Main {
 		if(t.leftChild != null) {
 			in(t.leftChild);
 		}
-		System.out.print((char)('A'+t.value));
+		sb.append((char)('A'+t.value));
 		if(t.rightChild != null) {
 			in(t.rightChild);
 		}
@@ -74,6 +72,6 @@ public class Main {
 		if(t.rightChild != null) {
 			post(t.rightChild);
 		}
-		System.out.print((char)('A'+t.value));
+		sb.append((char)('A'+t.value));
 	}
 }
