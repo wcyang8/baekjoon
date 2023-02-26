@@ -9,35 +9,33 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-
+		StringBuilder sb = new StringBuilder();
+		
 		N = Integer.parseInt(st.nextToken());
 		long B = Long.parseLong(st.nextToken());
 		
 		A = new int[N][N];
-		int[][] temp = new int[N][N];
 		
 		for(int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j = 0; j < N; j++) {
-				A[i][j] = Integer.parseInt(st.nextToken()) % 1000;
-				temp[i][j] = A[i][j];
+				A[i][j] = Integer.parseInt(st.nextToken()) % 1000;		// 원소가 전부 1000인 케이스 때문에 미리 1000
 			}
 		}
-		
-		temp = pow(temp,B);
-		
-		for(int[] t : temp) {
+		// A^B 각 원소 출력
+		for(int[] t : pow(B)) {
 			for(int i : t) {
-				System.out.print(i + " ");
+				sb.append(i).append(' ');
 			}
-			System.out.println();
+			sb.append('\n');
 		}
+		System.out.print(sb);
 	}
 
-	static int[][] pow(int[][] temp, long B) {
-		if(B == 1) return temp;
+	static int[][] pow(long B) {
+		if(B == 1) return A;
 		
-		int[][] res = pow(temp, B/2);
+		int[][] res = pow(B/2);
 		res = mul(res,res);
 		if(B % 2 == 1) {
 			res = mul(res,A);
@@ -59,5 +57,4 @@ public class Main {
 		
 		return result;
 	}
-	
 }
