@@ -51,14 +51,14 @@ public class Main {
 			road[A].add(new pair(B, C));
 			road[B].add(new pair(A, C));
 		}
-		PriorityQueue<pair> selected = new PriorityQueue<>();
+		PriorityQueue<pair> selected = new PriorityQueue<>();	// 선택된 점과 연결된 간선을 넣어줄 우선순위 큐
 
-		int sum = 0;
-		for (pair p : road[0])
-			selected.add(p);
-		int maxCost = 0;
+		int sum = 0;	// 최소 신장 트리 비용 총 합
+		for (pair p : road[0])		// 0부터 시작
+			selected.add(p);		// 0과 연결된 간선 전부 pq에 add
+		int maxCost = 0;			// 연결된 간선 중 가장 높은 유지비를 가지는 간선
 		for (int cnt = 1; cnt < N; cnt++) { // 점이 N개 선택될 때까지 반복
-			while (!selected.isEmpty() && !union(0, selected.peek().dest)) {
+			while (!selected.isEmpty() && findSet(selected.peek().dest) == 0) {	// 
 				selected.poll();
 			}
 			pair temp = selected.poll();
