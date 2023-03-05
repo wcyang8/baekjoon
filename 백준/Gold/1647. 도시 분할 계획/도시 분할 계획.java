@@ -64,7 +64,7 @@ public class Main {
 			pair temp = selected.poll();
 			house[temp.dest] = 0;
 			for (pair p : road[temp.dest])
-				selected.add(p);
+				if(house[p.dest] != 0) selected.add(p);
 			sum += temp.cost;
 			maxCost = Math.max(maxCost, temp.cost);
 		}
