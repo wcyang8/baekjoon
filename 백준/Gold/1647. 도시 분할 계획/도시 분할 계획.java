@@ -24,8 +24,6 @@ class pair implements Comparable<pair> {
 
 public class Main {
 
-	static int[] house;
-
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -33,10 +31,9 @@ public class Main {
 		int N = Integer.parseInt(st.nextToken()); // N 입력
 		int M = Integer.parseInt(st.nextToken()); // M 입력
 
-		house = new int[N];
+		boolean[] house = new boolean[N];
 		List<pair>[] road = new LinkedList[N]; // 간선 생성
 		for (int i = 0; i < N; i++) {
-			house[i] = i;
 			road[i] = new LinkedList<pair>(); // 간선 초기화
 		}
 
@@ -53,36 +50,23 @@ public class Main {
 		}
 		PriorityQueue<pair> selected = new PriorityQueue<>();	// 선택된 점과 연결된 간선을 넣어줄 우선순위 큐
 
+        house[0] = true;
 		int sum = 0;	// 최소 신장 트리 비용 총 합
 		for (pair p : road[0])		// 0부터 시작
 			selected.add(p);		// 0과 연결된 간선 전부 pq에 add
 		int maxCost = 0;			// 연결된 간선 중 가장 높은 유지비를 가지는 간선
 		for (int cnt = 1; cnt < N; cnt++) { // 점이 N개 선택될 때까지 반복
-			while (!selected.isEmpty() && findSet(selected.peek().dest) == 0) {	// 
+			while (!selected.isEmpty() && house[selected.peek().dest]) {	// 
 				selected.poll();
 			}
 			pair temp = selected.poll();
-			house[temp.dest] = 0;
+			house[temp.dest] = true;
 			for (pair p : road[temp.dest])
-				if(house[p.dest] != 0) selected.add(p);
+				if(!house[p.dest]) selected.add(p);
 			sum += temp.cost;
 			maxCost = Math.max(maxCost, temp.cost);
 		}
 		sum -= maxCost;
 		System.out.println(sum);
-	}
-
-	static int findSet(int v) {
-		if (house[v] != v)
-			return house[v] = findSet(house[v]);
-		else
-			return v;
-	}
-
-	static boolean union(int a, int b) {
-		if (findSet(a) == findSet(b))
-			return false;
-		house[b] = a;
-		return true;
 	}
 }
